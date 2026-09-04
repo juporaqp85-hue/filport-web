@@ -1,0 +1,1265 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>FILPORT | Un grupo. Muchas soluciones.</title>
+  <meta name="description" content="FILPORT reúne negocios, servicios y soluciones digitales para diferentes necesidades.">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --teal: #08aaa5;
+      --teal-dark: #007f82;
+      --navy: #08284b;
+      --blue: #1877c9;
+      --light: #f4fbfb;
+      --text: #24364b;
+      --white: #ffffff;
+      --gold: #d59b32;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      color: var(--text);
+      background: white;
+      line-height: 1.5;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    /* =========================
+       HEADER
+    ========================= */
+
+    header {
+      height: 82px;
+      background: white;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 6%;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 2px 15px rgba(0,0,0,.06);
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .brand-symbol {
+      width: 54px;
+      height: 54px;
+      position: relative;
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+    }
+
+    .bars {
+      display: flex;
+      align-items: flex-end;
+      gap: 4px;
+      height: 43px;
+    }
+
+    .bar {
+      width: 7px;
+      background: linear-gradient(to top, #1688c7, #4db4e3);
+      border-radius: 2px 2px 0 0;
+    }
+
+    .bar:nth-child(1) { height: 19px; }
+    .bar:nth-child(2) { height: 28px; }
+    .bar:nth-child(3) { height: 37px; }
+    .bar:nth-child(4) { height: 45px; }
+
+    .brand-arrow {
+      position: absolute;
+      width: 45px;
+      height: 7px;
+      background: #b7e900;
+      transform: rotate(-27deg);
+      top: 26px;
+      left: 3px;
+      border-radius: 5px;
+    }
+
+    .brand-arrow::after {
+      content: "";
+      position: absolute;
+      right: -8px;
+      top: -5px;
+      border-left: 13px solid #b7e900;
+      border-top: 9px solid transparent;
+      border-bottom: 9px solid transparent;
+    }
+
+    .brand-text strong {
+      display: block;
+      font-family: Georgia, serif;
+      font-size: 28px;
+      letter-spacing: 3px;
+      color: var(--navy);
+      line-height: 1;
+    }
+
+    .brand-text span {
+      display: block;
+      font-size: 10px;
+      letter-spacing: 4px;
+      color: var(--teal-dark);
+      font-weight: bold;
+      margin-top: 4px;
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+      gap: 38px;
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--navy);
+    }
+
+    nav a {
+      position: relative;
+      padding: 29px 0;
+    }
+
+    nav a:hover,
+    nav a.active {
+      color: var(--teal-dark);
+    }
+
+    nav a.active::after {
+      content: "";
+      position: absolute;
+      height: 3px;
+      background: var(--teal);
+      left: 0;
+      right: 0;
+      bottom: 8px;
+      border-radius: 5px;
+    }
+
+    .contact-btn {
+      border: 1.5px solid var(--teal);
+      color: var(--teal-dark);
+      padding: 11px 22px;
+      border-radius: 10px;
+      font-weight: bold;
+      transition: .25s;
+    }
+
+    .contact-btn:hover {
+      background: var(--teal);
+      color: white;
+    }
+
+    /* =========================
+       HERO
+    ========================= */
+
+    .hero {
+      min-height: 560px;
+      position: relative;
+      overflow: hidden;
+      background:
+        radial-gradient(circle at 80% 35%, rgba(8,170,165,.17), transparent 28%),
+        linear-gradient(110deg, #f5fcfc 0%, #ffffff 54%, #e9f8f8 100%);
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      width: 430px;
+      height: 650px;
+      right: 6%;
+      top: -120px;
+      background: linear-gradient(145deg, transparent 35%, rgba(8,170,165,.88) 36%, rgba(8,170,165,.88) 49%, transparent 50%);
+      opacity: .75;
+      transform: rotate(7deg);
+    }
+
+    .hero-inner {
+      max-width: 1250px;
+      min-height: 560px;
+      margin: auto;
+      padding: 75px 6%;
+      position: relative;
+      z-index: 2;
+      display: flex;
+      align-items: center;
+    }
+
+    .hero-content {
+      max-width: 570px;
+    }
+
+    .eyebrow {
+      color: var(--teal-dark);
+      font-size: 14px;
+      font-weight: bold;
+      letter-spacing: 2px;
+      margin-bottom: 15px;
+    }
+
+    .hero h1 {
+      font-size: clamp(45px, 5vw, 70px);
+      line-height: .98;
+      color: var(--navy);
+      margin-bottom: 20px;
+    }
+
+    .hero h1 span {
+      color: var(--teal);
+    }
+
+    .hero-description {
+      font-size: 18px;
+      color: #526176;
+      max-width: 510px;
+      margin-bottom: 30px;
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary,
+    .btn-secondary {
+      padding: 14px 25px;
+      border-radius: 9px;
+      font-weight: bold;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      transition: .25s;
+    }
+
+    .btn-primary {
+      background: var(--teal);
+      color: white;
+      box-shadow: 0 8px 20px rgba(8,170,165,.22);
+    }
+
+    .btn-primary:hover {
+      background: var(--teal-dark);
+      transform: translateY(-2px);
+    }
+
+    .btn-secondary {
+      border: 1.5px solid var(--teal);
+      color: var(--teal-dark);
+      background: white;
+    }
+
+    .btn-secondary:hover {
+      background: #effafa;
+    }
+
+    .hero-points {
+      display: flex;
+      gap: 35px;
+      margin-top: 35px;
+      flex-wrap: wrap;
+    }
+
+    .point {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      font-weight: bold;
+      font-size: 13px;
+      color: var(--navy);
+    }
+
+    .point-icon {
+      width: 35px;
+      height: 35px;
+      border-radius: 50%;
+      background: #e1f8f7;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--teal-dark);
+      font-size: 18px;
+    }
+
+    .hero-card {
+      position: absolute;
+      right: 5%;
+      bottom: 60px;
+      width: 390px;
+      padding: 32px;
+      border-radius: 22px;
+      background: rgba(255,255,255,.94);
+      box-shadow: 0 25px 60px rgba(7,54,77,.16);
+      z-index: 3;
+    }
+
+    .hero-card-logo {
+      text-align: center;
+      margin-bottom: 18px;
+    }
+
+    .hero-card-logo strong {
+      font-family: Georgia, serif;
+      font-size: 31px;
+      color: var(--navy);
+      letter-spacing: 3px;
+    }
+
+    .hero-card-logo span {
+      display: block;
+      font-size: 11px;
+      letter-spacing: 4px;
+      color: var(--teal);
+      font-weight: bold;
+    }
+
+    .hero-card h3 {
+      text-align: center;
+      color: var(--navy);
+      font-size: 20px;
+      margin-bottom: 22px;
+    }
+
+    .hero-stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      text-align: center;
+    }
+
+    .hero-stat {
+      background: #f1fbfb;
+      padding: 14px 5px;
+      border-radius: 12px;
+    }
+
+    .hero-stat b {
+      display: block;
+      color: var(--teal-dark);
+      font-size: 22px;
+    }
+
+    .hero-stat small {
+      color: #607084;
+      font-size: 11px;
+    }
+
+    /* =========================
+       NEGOCIOS
+    ========================= */
+
+    .businesses {
+      background: #f5fbfb;
+      padding: 75px 6% 85px;
+    }
+
+    .section-title {
+      text-align: center;
+      max-width: 750px;
+      margin: 0 auto 45px;
+    }
+
+    .section-title .eyebrow {
+      margin-bottom: 8px;
+    }
+
+    .section-title h2 {
+      font-size: 38px;
+      color: var(--navy);
+      margin-bottom: 12px;
+    }
+
+    .section-title h2 span {
+      color: var(--teal);
+    }
+
+    .section-title p {
+      color: #637286;
+      font-size: 16px;
+    }
+
+    .business-grid {
+      max-width: 1250px;
+      margin: auto;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+    }
+
+    .business-card {
+      background: white;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 5px 20px rgba(0,0,0,.07);
+      transition: .3s;
+      border: 1px solid #e7eeee;
+    }
+
+    .business-card:hover {
+      transform: translateY(-7px);
+      box-shadow: 0 18px 35px rgba(0,0,0,.11);
+    }
+
+    .business-image {
+      height: 145px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 65px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .finance-bg {
+      background: linear-gradient(135deg, #e6f7ed, #bcead1);
+    }
+
+    .delivery-bg {
+      background: linear-gradient(135deg, #e2f5fa, #bde6ed);
+    }
+
+    .personal-bg {
+      background: linear-gradient(135deg, #e7f0ff, #c9dcfa);
+    }
+
+    .liquor-bg {
+      background: linear-gradient(135deg, #f8eedb, #ead4a8);
+    }
+
+    .clean-bg {
+      background: linear-gradient(135deg, #eef8ee, #d3ead5);
+    }
+
+    .company-bg {
+      background: linear-gradient(135deg, #e8f0fa, #cbdced);
+    }
+
+    .school-bg {
+      background: linear-gradient(135deg, #e9f4fa, #cfe5ef);
+    }
+
+    .more-bg {
+      background: linear-gradient(135deg, #edf2f5, #d6e0e6);
+    }
+
+    .business-content {
+      padding: 20px;
+    }
+
+    .business-content h3 {
+      font-size: 19px;
+      color: var(--navy);
+      margin-bottom: 3px;
+    }
+
+    .business-content .category {
+      color: var(--teal-dark);
+      font-weight: bold;
+      font-size: 12px;
+      margin-bottom: 12px;
+    }
+
+    .business-content p {
+      font-size: 13px;
+      color: #637080;
+      min-height: 58px;
+    }
+
+    .business-link {
+      display: block;
+      margin-top: 15px;
+      background: var(--teal);
+      color: white;
+      text-align: center;
+      padding: 10px;
+      border-radius: 7px;
+      font-size: 13px;
+      font-weight: bold;
+    }
+
+    .business-link.disabled {
+      background: #e3e9ed;
+      color: #6c7986;
+    }
+
+    /* =========================
+       FUTURO
+    ========================= */
+
+    .future {
+      padding: 75px 6%;
+      background:
+        linear-gradient(rgba(227,247,249,.92), rgba(227,247,249,.92)),
+        linear-gradient(to bottom, #b8dbe3, #ffffff);
+      text-align: center;
+    }
+
+    .future h2 {
+      color: var(--navy);
+      font-size: 34px;
+      margin-bottom: 8px;
+    }
+
+    .future p {
+      color: var(--teal-dark);
+      font-weight: bold;
+      letter-spacing: 1px;
+    }
+
+    /* =========================
+       FOOTER
+    ========================= */
+
+    footer {
+      background: #004f60;
+      color: white;
+      padding: 55px 6% 20px;
+    }
+
+    .footer-main {
+      max-width: 1250px;
+      margin: auto;
+      display: grid;
+      grid-template-columns: 2fr 1fr 1.5fr 1fr;
+      gap: 50px;
+    }
+
+    .footer-brand strong {
+      display: block;
+      font-family: Georgia, serif;
+      font-size: 32px;
+      letter-spacing: 3px;
+    }
+
+    .footer-brand span {
+      letter-spacing: 5px;
+      font-size: 11px;
+      color: #9de6df;
+    }
+
+    .footer-column h4 {
+      margin-bottom: 15px;
+      font-size: 15px;
+    }
+
+    .footer-column a,
+    .footer-column p {
+      display: block;
+      color: #d7edef;
+      font-size: 13px;
+      margin-bottom: 9px;
+    }
+
+    .social {
+      display: flex;
+      gap: 10px;
+    }
+
+    .social a {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: rgba(255,255,255,.13);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-weight: bold;
+    }
+
+    .footer-bottom {
+      max-width: 1250px;
+      margin: 35px auto 0;
+      padding-top: 18px;
+      border-top: 1px solid rgba(255,255,255,.2);
+      display: flex;
+      justify-content: space-between;
+      font-size: 12px;
+      color: #c5e2e4;
+    }
+
+    /* =========================
+       MOBILE
+    ========================= */
+
+    @media (max-width: 1050px) {
+      nav {
+        gap: 18px;
+      }
+
+      .hero-card {
+        right: 3%;
+        width: 340px;
+      }
+
+      .business-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 800px) {
+
+      header {
+        height: 72px;
+        padding: 0 20px;
+      }
+
+      nav {
+        display: none;
+      }
+
+      .contact-btn {
+        padding: 9px 14px;
+        font-size: 13px;
+      }
+
+      .brand-text strong {
+        font-size: 23px;
+      }
+
+      .hero {
+        min-height: auto;
+      }
+
+      .hero::after {
+        display: none;
+      }
+
+      .hero-inner {
+        min-height: auto;
+        padding: 55px 25px;
+        display: block;
+      }
+
+      .hero-content {
+        max-width: none;
+      }
+
+      .hero h1 {
+        font-size: 48px;
+      }
+
+      .hero-card {
+        position: relative;
+        right: auto;
+        bottom: auto;
+        width: 100%;
+        margin-top: 45px;
+      }
+
+      .businesses {
+        padding: 60px 20px;
+      }
+
+      .section-title h2 {
+        font-size: 30px;
+      }
+
+      .business-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .footer-main {
+        grid-template-columns: 1fr 1fr;
+        gap: 35px;
+      }
+
+      .footer-bottom {
+        flex-direction: column;
+        gap: 8px;
+      }
+    }
+
+    @media (max-width: 500px) {
+
+      .brand-symbol {
+        width: 45px;
+      }
+
+      .brand-text span {
+        letter-spacing: 2px;
+      }
+
+      .hero h1 {
+        font-size: 42px;
+      }
+
+      .hero-description {
+        font-size: 16px;
+      }
+
+      .hero-points {
+        gap: 15px;
+      }
+
+      .hero-buttons {
+        flex-direction: column;
+      }
+
+      .btn-primary,
+      .btn-secondary {
+        justify-content: center;
+      }
+
+      .footer-main {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- =========================
+       HEADER
+  ========================== -->
+
+  <header>
+
+    <a href="#inicio" class="brand">
+
+      <div class="brand-symbol">
+        <div class="bars">
+          <div class="bar"></div>
+          <div class="bar"></div>
+          <div class="bar"></div>
+          <div class="bar"></div>
+        </div>
+
+        <div class="brand-arrow"></div>
+      </div>
+
+      <div class="brand-text">
+        <strong>FILPORT</strong>
+        <span>GRUPO DE SOLUCIONES</span>
+      </div>
+
+    </a>
+
+    <nav>
+      <a href="#inicio" class="active">Inicio</a>
+      <a href="#nosotros">Nosotros</a>
+      <a href="#negocios">Negocios</a>
+      <a href="#futuro">Innovación</a>
+      <a href="#contacto">Contacto</a>
+    </nav>
+
+    <a href="#contacto" class="contact-btn">
+      ✉ Contacto
+    </a>
+
+  </header>
+
+
+  <!-- =========================
+       HERO
+  ========================== -->
+
+  <section class="hero" id="inicio">
+
+    <div class="hero-inner">
+
+      <div class="hero-content">
+
+        <div class="eyebrow">
+          MÁS QUE NEGOCIOS, CREAMOS OPORTUNIDADES
+        </div>
+
+        <h1>
+          FILPORT<br>
+          <span>Un grupo.</span><br>
+          Muchas soluciones.
+        </h1>
+
+        <p class="hero-description">
+          Desarrollamos y gestionamos negocios, servicios y tecnología
+          para mejorar la vida de las personas y hacer crecer las empresas.
+        </p>
+
+        <div class="hero-buttons">
+
+          <a href="#negocios" class="btn-primary">
+            ◫ &nbsp; Conoce nuestros negocios →
+          </a>
+
+          <a href="#nosotros" class="btn-secondary">
+            ▶ &nbsp; Conoce FILPORT
+          </a>
+
+        </div>
+
+        <div class="hero-points">
+
+          <div class="point">
+            <div class="point-icon">◆</div>
+            Soluciones reales
+          </div>
+
+          <div class="point">
+            <div class="point-icon">✦</div>
+            Innovación constante
+          </div>
+
+          <div class="point">
+            <div class="point-icon">●</div>
+            Personas en el centro
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <div class="hero-card">
+
+        <div class="hero-card-logo">
+          <strong>FILPORT</strong>
+          <span>GRUPO DE SOLUCIONES</span>
+        </div>
+
+        <h3>
+          Diferentes caminos.<br>
+          Un mismo propósito.
+        </h3>
+
+        <div class="hero-stats">
+
+          <div class="hero-stat">
+            <b>01</b>
+            <small>Personas</small>
+          </div>
+
+          <div class="hero-stat">
+            <b>∞</b>
+            <small>Ideas</small>
+          </div>
+
+          <div class="hero-stat">
+            <b>+</b>
+            <small>Soluciones</small>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- =========================
+       NOSOTROS
+  ========================== -->
+
+  <section id="nosotros" class="businesses">
+
+    <div class="section-title">
+
+      <div class="eyebrow">
+        FILPORT
+      </div>
+
+      <h2>
+        Un grupo que <span>crece contigo</span>
+      </h2>
+
+      <p>
+        Creamos y desarrollamos negocios, plataformas y soluciones
+        pensadas para diferentes necesidades de la vida diaria.
+      </p>
+
+    </div>
+
+  </section>
+
+
+  <!-- =========================
+       NEGOCIOS
+  ========================== -->
+
+  <section class="businesses" id="negocios">
+
+    <div class="section-title">
+
+      <div class="eyebrow">
+        NUESTROS NEGOCIOS
+      </div>
+
+      <h2>
+        Soluciones para <span>cada necesidad</span>
+      </h2>
+
+      <p>
+        Conoce las plataformas y negocios que forman parte de FILPORT.
+      </p>
+
+    </div>
+
+
+    <div class="business-grid">
+
+
+      <!-- FINANZAS -->
+
+      <article class="business-card">
+
+        <div class="business-image finance-bg">
+          💰
+        </div>
+
+        <div class="business-content">
+
+          <h3>FILPORT Finanzas</h3>
+
+          <div class="category">
+            GESTIÓN DE PRÉSTAMOS
+          </div>
+
+          <p>
+            Préstamos simples, rápidos y confiables para hacer realidad
+            tus planes.
+          </p>
+
+          <a href="#" class="business-link">
+            Ingresar →
+          </a>
+
+        </div>
+
+      </article>
+
+
+      <!-- LLEVO -->
+
+      <article class="business-card">
+
+        <div class="business-image delivery-bg">
+          🛵
+        </div>
+
+        <div class="business-content">
+
+          <h3>LLEVO</h3>
+
+          <div class="category">
+            DELIVERY Y ENTREGAS
+          </div>
+
+          <p>
+            Tu mundo en movimiento. Envíos rápidos, seguros y a tu alcance.
+          </p>
+
+          <a href="#" class="business-link">
+            Ingresar →
+          </a>
+
+        </div>
+
+      </article>
+
+
+      <!-- FINANZAS PERSONALES -->
+
+      <article class="business-card">
+
+        <div class="business-image personal-bg">
+          💳
+        </div>
+
+        <div class="business-content">
+
+          <h3>Finanzas Personales</h3>
+
+          <div class="category">
+            PRÓXIMAMENTE
+          </div>
+
+          <p>
+            Administra tus ingresos, gastos y ahorra para construir
+            un mejor futuro.
+          </p>
+
+          <a href="#" class="business-link">
+            Conocer más →
+          </a>
+
+        </div>
+
+      </article>
+
+
+      <!-- LICORERÍA -->
+
+      <article class="business-card">
+
+        <div class="business-image liquor-bg">
+          🍾
+        </div>
+
+        <div class="business-content">
+
+          <h3>Licorería</h3>
+
+          <div class="category">
+            PRÓXIMAMENTE
+          </div>
+
+          <p>
+            Una nueva experiencia para disfrutar bebidas y buenos momentos.
+          </p>
+
+          <a href="#" class="business-link disabled">
+            Muy pronto
+          </a>
+
+        </div>
+
+      </article>
+
+
+      <!-- LIMPIEZA -->
+
+      <article class="business-card">
+
+        <div class="business-image clean-bg">
+          🧹
+        </div>
+
+        <div class="business-content">
+
+          <h3>Limpieza</h3>
+
+          <div class="category">
+            PRÓXIMAMENTE
+          </div>
+
+          <p>
+            Servicios y soluciones de limpieza para hogares y empresas.
+          </p>
+
+          <a href="#" class="business-link disabled">
+            Muy pronto
+          </a>
+
+        </div>
+
+      </article>
+
+
+      <!-- EMPRESAS -->
+
+      <article class="business-card">
+
+        <div class="business-image company-bg">
+          🏢
+        </div>
+
+        <div class="business-content">
+
+          <h3>Soluciones para Empresas</h3>
+
+          <div class="category">
+            PRÓXIMAMENTE
+          </div>
+
+          <p>
+            Herramientas y servicios para ayudar a crecer tu negocio.
+          </p>
+
+          <a href="#" class="business-link disabled">
+            Muy pronto
+          </a>
+
+        </div>
+
+      </article>
+
+
+      <!-- COLEGIOS -->
+
+      <article class="business-card">
+
+        <div class="business-image school-bg">
+          🎓
+        </div>
+
+        <div class="business-content">
+
+          <h3>Soluciones para Colegios</h3>
+
+          <div class="category">
+            PRÓXIMAMENTE
+          </div>
+
+          <p>
+            Tecnología y servicios para una educación más conectada.
+          </p>
+
+          <a href="#" class="business-link disabled">
+            Muy pronto
+          </a>
+
+        </div>
+
+      </article>
+
+
+      <!-- MÁS PROYECTOS -->
+
+      <article class="business-card">
+
+        <div class="business-image more-bg">
+          ✦
+        </div>
+
+        <div class="business-content">
+
+          <h3>Más proyectos</h3>
+
+          <div class="category">
+            EN DESARROLLO
+          </div>
+
+          <p>
+            Seguimos creando nuevas soluciones para un mejor mañana.
+          </p>
+
+          <a href="#contacto" class="business-link">
+            Conoce más →
+          </a>
+
+        </div>
+
+      </article>
+
+    </div>
+
+  </section>
+
+
+  <!-- =========================
+       FUTURO
+  ========================== -->
+
+  <section class="future" id="futuro">
+
+    <h2>
+      Construyendo un futuro con más oportunidades
+    </h2>
+
+    <p>
+      FILPORT — Innovación que impulsa
+    </p>
+
+  </section>
+
+
+  <!-- =========================
+       FOOTER
+  ========================== -->
+
+  <footer id="contacto">
+
+    <div class="footer-main">
+
+      <div class="footer-brand">
+
+        <strong>FILPORT</strong>
+
+        <span>
+          GRUPO DE SOLUCIONES
+        </span>
+
+        <p style="margin-top:18px; color:#d7edef; max-width:300px;">
+          Un grupo. Muchas soluciones.
+          Creamos proyectos que buscan generar oportunidades
+          y facilitar la vida de las personas.
+        </p>
+
+      </div>
+
+
+      <div class="footer-column">
+
+        <h4>Enlaces</h4>
+
+        <a href="#inicio">Inicio</a>
+        <a href="#nosotros">Nosotros</a>
+        <a href="#negocios">Negocios</a>
+        <a href="#futuro">Innovación</a>
+        <a href="#contacto">Contacto</a>
+
+      </div>
+
+
+      <div class="footer-column">
+
+        <h4>Contáctanos</h4>
+
+        <p>✉ contacto@filport.pe</p>
+        <p>☎ +51 000 000 000</p>
+        <p>📍 Lima, Perú</p>
+
+      </div>
+
+
+      <div class="footer-column">
+
+        <h4>Síguenos</h4>
+
+        <div class="social">
+
+          <a href="#" aria-label="Facebook">f</a>
+          <a href="#" aria-label="Instagram">◎</a>
+          <a href="#" aria-label="LinkedIn">in</a>
+          <a href="#" aria-label="YouTube">▶</a>
+
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <div class="footer-bottom">
+
+      <span>
+        © 2026 FILPORT. Todos los derechos reservados.
+      </span>
+
+      <span>
+        Un grupo. Muchas soluciones.
+      </span>
+
+    </div>
+
+  </footer>
+
+</body>
+</html>
