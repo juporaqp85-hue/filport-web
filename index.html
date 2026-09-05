@@ -4,6 +4,10 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>FILPORT | Grupo de Soluciones</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800;900&family=Poppins:wght@500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 <style>
 *{box-sizing:border-box}
 html,body{margin:0;padding:0;background:#fff}
@@ -51,6 +55,53 @@ a{text-decoration:none;color:inherit}
 .header-wrap,.footer-wrap{width:100%;line-height:0}
 .header-img{width:100%;height:auto;display:block}
 .footer-img{width:100%;height:auto;display:block}
+
+/* CABECERA DE NOSOTROS — permanece visible mientras se recorre la sección */
+#nosotros .nosotros-header-wrap{
+  position:sticky;
+  top:0;
+  z-index:10000;
+  width:100%;
+  height:75px;
+  background:#fff;
+  line-height:0;
+  box-shadow:0 2px 12px rgba(9,44,82,.08);
+}
+#nosotros .nosotros-header-img{
+  display:block;
+  width:100%;
+  height:75px;
+  object-fit:cover;
+}
+#nosotros .nosotros-header-nav{
+  position:absolute;
+  inset:0;
+  height:75px;
+}
+#nosotros .nosotros-header-nav a{
+  position:absolute;
+  top:0;
+  height:75px;
+  display:block;
+  background:transparent;
+  text-decoration:none;
+}
+#nosotros .nosotros-header-nav .nav-inicio{left:33%;width:7%;}
+#nosotros .nosotros-header-nav .nav-nosotros{left:39.5%;width:8%;}
+#nosotros .nosotros-header-nav .nav-negocios{left:47%;width:9%;}
+#nosotros .nosotros-header-nav .nav-innovacion{left:54.5%;width:10%;}
+#nosotros .nosotros-header-nav .nav-contacto{left:62.5%;width:9%;}
+
+#nosotros .nosotros-footer-wrap{
+  width:100%;
+  line-height:0;
+  position:relative;
+}
+#nosotros .nosotros-footer-img{
+  display:block;
+  width:100%;
+  height:auto;
+}
 
 .main{background:#fff}
 .container{width:min(1060px,calc(100% - 44px));margin:auto}
@@ -276,7 +327,20 @@ body.section-open{
 </style>
 
 <section id="nosotros" class="filport-section" aria-label="Nosotros">
-<main class="main">
+
+  <!-- CABECERA: se mantiene arriba durante todo el recorrido de Nosotros -->
+  <header class="nosotros-header-wrap">
+    <img class="nosotros-header-img" src="header-filport-nosotros.png" alt="FILPORT - Grupo de Soluciones">
+    <nav class="nosotros-header-nav" aria-label="Navegación">
+      <a class="nav-inicio" href="#inicio" aria-label="Inicio"></a>
+      <a class="nav-nosotros" href="#nosotros" aria-label="Nosotros"></a>
+      <a class="nav-negocios" href="#negocios" aria-label="Negocios"></a>
+      <a class="nav-innovacion" href="#innovacion" aria-label="Innovación"></a>
+      <a class="nav-contacto" href="#contacto" aria-label="Contacto"></a>
+    </nav>
+  </header>
+
+  <main class="main">
 
     <section class="hero">
       <div class="container hero-grid">
@@ -442,6 +506,11 @@ body.section-open{
     </section>
 
   </main>
+
+  <!-- PIE: se conserva el diseño original de Nosotros -->
+  <footer class="nosotros-footer-wrap">
+    <img class="nosotros-footer-img" src="footer-filport.png" alt="FILPORT - Grupo de Soluciones">
+  </footer>
 </section>
 
 <script id="filport-navigation">
@@ -451,45 +520,48 @@ body.section-open{
 
   if (!home || !nosotros) return;
 
-  function showHome() {
+  function showHome(updateHistory = true) {
     home.style.display = '';
     nosotros.classList.remove('active');
     document.body.classList.remove('section-open');
     window.scrollTo({ top: 0, behavior: 'smooth' });
-    history.replaceState(null, '', '#inicio');
+    if (updateHistory) history.pushState(null, '', '#inicio');
   }
 
-  function showNosotros() {
+  function showNosotros(updateHistory = true) {
     home.style.display = 'none';
     nosotros.classList.add('active');
     document.body.classList.add('section-open');
     window.scrollTo({ top: 0, behavior: 'smooth' });
-    history.replaceState(null, '', '#nosotros');
+    if (updateHistory) history.pushState(null, '', '#nosotros');
   }
 
   document.querySelectorAll('a[href="#nosotros"]').forEach(function (link) {
     link.addEventListener('click', function (event) {
       event.preventDefault();
-      showNosotros();
+      showNosotros(true);
     });
   });
 
   document.querySelectorAll('a[href="#inicio"]').forEach(function (link) {
     link.addEventListener('click', function (event) {
       event.preventDefault();
-      showHome();
+      showHome(true);
     });
   });
 
-  nosotros.querySelectorAll('[data-filport-home]').forEach(function (button) {
-    button.addEventListener('click', showHome);
+  window.addEventListener('popstate', function () {
+    if (window.location.hash === '#nosotros') {
+      showNosotros(false);
+    } else {
+      showHome(false);
+    }
   });
 
-  // Permite abrir directamente index.html#nosotros.
   if (window.location.hash === '#nosotros') {
-    showNosotros();
+    showNosotros(false);
   } else {
-    showHome();
+    showHome(false);
   }
 })();
 </script>
