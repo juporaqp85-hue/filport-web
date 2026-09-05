@@ -27,6 +27,32 @@ body{font-family:Arial,Helvetica,sans-serif;overflow-x:auto}
 .card-finanzas{left:42px;top:596px;width:245px;height:246px}
 .card-llevo{left:301px;top:596px;width:246px;height:246px}
 .card-personales{left:559px;top:596px;width:247px;height:246px}
+
+/* =========================================================
+   INICIO: ENCABEZADO Y PIE FIJOS
+   La portada original permanece intacta; solo se superponen
+   recortes del mismo arte para mantenerlos visibles al hacer scroll.
+   ========================================================= */
+#home-fixed-header,#home-fixed-footer{
+  position:fixed;left:50%;transform:translateX(-50%);width:1123px;
+  z-index:999999;pointer-events:none;overflow:hidden;display:none;
+}
+#home-fixed-header{top:0;height:76px;}
+#home-fixed-footer{bottom:0;height:190px;}
+#home-fixed-header img,#home-fixed-footer img{
+  position:absolute;left:0;width:1123px;height:1401px;
+  max-width:none;display:block;
+}
+#home-fixed-header img{top:0;}
+#home-fixed-footer img{bottom:0;}
+body.home-fixed #home-fixed-header,body.home-fixed #home-fixed-footer{display:block;}
+@media(max-width:1123px){
+  #home-fixed-header,#home-fixed-footer{width:100vw;}
+  #home-fixed-header img,#home-fixed-footer img{
+    left:50%;transform:translateX(-50%);
+    width:1123px;height:1401px;
+  }
+}
 </style>
 </head>
 <body>
@@ -44,6 +70,9 @@ body{font-family:Arial,Helvetica,sans-serif;overflow-x:auto}
   <a class="hotspot card-llevo" href="#llevo" aria-label="LLEVO"></a>
   <a class="hotspot card-personales" href="#finanzas-personales" aria-label="Finanzas Personales"></a>
 </div>
+
+<div id="home-fixed-header" aria-hidden="true"><img alt=""></div>
+<div id="home-fixed-footer" aria-hidden="true"><img alt=""></div>
 
 <style id="filport-functional-layer">
 
@@ -328,16 +357,20 @@ body.section-open{
 
 <section id="nosotros" class="filport-section" aria-label="Nosotros">
 
-  <!-- CABECERA: se mantiene arriba durante todo el recorrido de Nosotros -->
+  <!-- CABECERA FIJA: permanece visible durante todo el recorrido de Nosotros -->
   <header class="nosotros-header-wrap">
-    <img class="nosotros-header-img" src="header-filport-nosotros.png" alt="FILPORT - Grupo de Soluciones">
-    <nav class="nosotros-header-nav" aria-label="Navegación">
-      <a class="nav-inicio" href="#inicio" aria-label="Inicio"></a>
-      <a class="nav-nosotros" href="#nosotros" aria-label="Nosotros"></a>
-      <a class="nav-negocios" href="#negocios" aria-label="Negocios"></a>
-      <a class="nav-innovacion" href="#innovacion" aria-label="Innovación"></a>
-      <a class="nav-contacto" href="#contacto" aria-label="Contacto"></a>
+    <a class="nosotros-brand" href="#inicio" aria-label="FILPORT - Inicio">
+      <span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+      <span class="brand-copy"><strong>FILPORT</strong><small>GRUPO DE SOLUCIONES</small></span>
+    </a>
+    <nav class="nosotros-header-nav" aria-label="Navegación principal">
+      <a class="nav-inicio" href="#inicio">Inicio</a>
+      <a class="nav-nosotros active" href="#nosotros">Nosotros</a>
+      <a class="nav-negocios" href="#negocios">Negocios</a>
+      <a class="nav-innovacion" href="#innovacion">Innovación</a>
+      <a class="nav-contacto" href="#contacto">Contacto</a>
     </nav>
+    <a class="nosotros-contact-btn" href="#contacto"><span>✉</span> Contáctanos</a>
   </header>
 
   <main class="main">
@@ -507,62 +540,139 @@ body.section-open{
 
   </main>
 
-  <!-- PIE: se conserva el diseño original de Nosotros -->
+  <!-- PIE: diseño integrado en el mismo index.html -->
   <footer class="nosotros-footer-wrap">
-    <img class="nosotros-footer-img" src="footer-filport.png" alt="FILPORT - Grupo de Soluciones">
+    <div class="footer-mountain">
+      <strong>Construyendo un futuro con más oportunidades</strong>
+      <span>FILPORT – Innovación que impulsa</span>
+    </div>
+    <div class="footer-main-custom">
+      <a class="footer-brand-custom" href="#inicio" aria-label="FILPORT - Inicio">
+        <span class="brand-mark light" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+        <span><strong>FILPORT</strong><small>GRUPO DE SOLUCIONES</small></span>
+      </a>
+      <div class="footer-col"><h4>Enlaces</h4><a href="#inicio">Inicio</a><a href="#nosotros">Nosotros</a><a href="#negocios">Negocios</a><a href="#innovacion">Innovación</a><a href="#contacto">Contacto</a></div>
+      <div class="footer-col"><h4>Contáctanos</h4><p>✉ &nbsp; contacto@filport.com</p><p>⌕ &nbsp; +51 987 654 321</p><p>⌖ &nbsp; Lima, Perú</p></div>
+      <div class="footer-col"><h4>Síguenos</h4><div class="social-custom"><span>f</span><span>◎</span><span>in</span><span>▶</span></div></div>
+    </div>
+    <div class="footer-bottom-custom"><span>© 2026 FILPORT. Todos los derechos reservados.</span><span>Un grupo. Muchas soluciones.</span></div>
   </footer>
 </section>
 
+<style id="filport-navegacion-definitiva">
+/* =========================================================
+   NAVEGACIÓN DEFINITIVA DE NOSOTROS
+   Todo queda autocontenido dentro de #nosotros.
+   ========================================================= */
+#nosotros{position:relative;padding:0!important;min-height:100vh;overflow:visible;background:#fff;}
+#nosotros .nosotros-header-wrap{
+  position:fixed!important;top:0;left:0;right:0;width:100%;height:75px!important;
+  z-index:2147483647;background:#fff;display:flex;align-items:center;
+  box-shadow:0 2px 12px rgba(9,44,82,.12);line-height:normal;
+}
+#nosotros .nosotros-brand{height:75px;width:31%;display:flex;align-items:center;padding-left:5.2%;gap:10px;color:#092c52;text-decoration:none;flex-shrink:0;}
+#nosotros .brand-copy{display:flex;flex-direction:column;line-height:1;}
+#nosotros .brand-copy strong{font-family:Georgia,'Times New Roman',serif;font-size:28px;letter-spacing:1px;color:#092c52;}
+#nosotros .brand-copy small{font-family:Arial,sans-serif;font-size:9px;letter-spacing:2px;font-weight:800;margin-top:4px;color:#092c52;}
+#nosotros .brand-mark{position:relative;width:45px;height:42px;display:flex;align-items:flex-end;gap:3px;transform:skewY(-8deg);}
+#nosotros .brand-mark i{display:block;width:6px;background:#08a99f;border-radius:1px 1px 0 0;}
+#nosotros .brand-mark i:nth-child(1){height:20px}.brand-mark i:nth-child(2){height:28px}.brand-mark i:nth-child(3){height:36px}.brand-mark i:nth-child(4){height:42px}
+#nosotros .brand-mark:after{content:"";position:absolute;left:0;bottom:0;width:46px;height:3px;background:#092c52;transform:skewX(-28deg);transform-origin:left center;}
+#nosotros .nosotros-header-nav{position:relative;inset:auto;height:75px;display:flex;align-items:center;justify-content:center;gap:34px;flex:1;}
+#nosotros .nosotros-header-nav a{position:relative!important;inset:auto!important;width:auto!important;height:auto!important;display:block;color:#092c52;font-family:Arial,sans-serif;font-size:13px;font-weight:700;text-decoration:none;padding:29px 0 27px;background:transparent!important;white-space:nowrap;}
+#nosotros .nosotros-header-nav a:hover,#nosotros .nosotros-header-nav a.active{color:#009c9c;}
+#nosotros .nosotros-header-nav a.active:after{content:"";position:absolute;left:0;right:0;bottom:13px;height:2px;background:#08aaa2;}
+#nosotros .nosotros-contact-btn{height:75px;width:20%;min-width:190px;display:flex;align-items:center;justify-content:center;gap:9px;color:#fff;text-decoration:none;font-family:Arial,sans-serif;font-size:13px;font-weight:700;background:linear-gradient(118deg,#08b7ad 0%,#08aaa2 100%);clip-path:polygon(18% 0,100% 0,100% 100%,0 100%);padding-left:15px;}
+#nosotros .nosotros-contact-btn span{font-size:17px;}
+#nosotros .main{padding-top:75px;}
+#nosotros .hero{margin-top:0;}
+#nosotros .nosotros-footer-wrap{position:relative;width:100%;line-height:normal;background:#005965;color:#fff;}
+#nosotros .footer-mountain{height:99px;background:linear-gradient(180deg,#f4fbfd 0%,#eaf6fa 100%);position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;overflow:hidden;color:#092c52;}
+#nosotros .footer-mountain:before{content:"";position:absolute;inset:auto 0 0;height:72px;background:linear-gradient(135deg,transparent 0 7%,rgba(118,180,204,.22) 7% 14%,transparent 14% 21%,rgba(118,180,204,.17) 21% 31%,transparent 31% 39%,rgba(118,180,204,.2) 39% 47%,transparent 47% 56%,rgba(118,180,204,.16) 56% 66%,transparent 66% 75%,rgba(118,180,204,.18) 75% 84%,transparent 84%);opacity:.9;}
+#nosotros .footer-mountain strong,#nosotros .footer-mountain span{position:relative;z-index:1;}
+#nosotros .footer-mountain strong{font-family:Arial,sans-serif;font-size:20px;margin-bottom:5px;}
+#nosotros .footer-mountain span{font-family:Arial,sans-serif;font-size:18px;font-weight:700;}
+#nosotros .footer-main-custom{min-height:136px;padding:17px 4.7% 13px;display:grid;grid-template-columns:1.5fr .9fr 1.4fr .9fr;gap:28px;background:#005965;}
+#nosotros .footer-brand-custom{display:flex;align-items:center;gap:12px;color:#fff;text-decoration:none;}
+#nosotros .footer-brand-custom .brand-mark.light i{background:#fff;}
+#nosotros .footer-brand-custom .brand-mark.light:after{background:#fff;}
+#nosotros .footer-brand-custom strong{display:block;font-family:Georgia,'Times New Roman',serif;font-size:30px;letter-spacing:1px;line-height:1;}
+#nosotros .footer-brand-custom small{display:block;font-family:Arial,sans-serif;font-size:9px;letter-spacing:2px;font-weight:800;margin-top:5px;}
+#nosotros .footer-col{display:flex;flex-direction:column;gap:4px;font-family:Arial,sans-serif;}
+#nosotros .footer-col h4{font-size:13px;margin:0 0 6px;font-weight:800;}
+#nosotros .footer-col a,#nosotros .footer-col p{font-size:12px;color:#fff;text-decoration:none;margin:0;line-height:1.25;}
+#nosotros .social-custom{display:flex;gap:16px;margin-top:6px;align-items:center;}
+#nosotros .social-custom span{width:27px;height:27px;border:2px solid rgba(255,255,255,.9);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:800;}
+#nosotros .footer-bottom-custom{height:51px;margin:0 4.7%;border-top:1px solid rgba(255,255,255,.2);display:flex;align-items:center;justify-content:space-between;background:#005965;font-family:Arial,sans-serif;font-size:11px;color:#fff;}
+@media(max-width:800px){
+  #nosotros .nosotros-brand{width:auto;padding-left:16px}.brand-copy strong{font-size:22px!important}.brand-copy small{font-size:7px!important}.brand-mark{width:34px!important;transform:scale(.8);transform-origin:left center;margin-right:-7px;}
+  #nosotros .nosotros-header-nav{gap:13px}.nosotros-header-nav a{font-size:10px!important}.nosotros-contact-btn{min-width:120px;width:17%;font-size:10px!important;}
+  #nosotros .footer-main-custom{grid-template-columns:1fr 1fr;}.footer-bottom-custom{font-size:9px;}
+}
+@media(max-width:560px){#nosotros .nosotros-header-nav a:nth-child(3),#nosotros .nosotros-header-nav a:nth-child(4),#nosotros .nosotros-header-nav a:nth-child(5){display:none}.nosotros-contact-btn{min-width:100px;width:25%;}.footer-main-custom{grid-template-columns:1fr!important;}.footer-bottom-custom{height:auto;min-height:55px;gap:8px;flex-direction:column;justify-content:center;padding:8px 0;}}
+</style>
+
+<script id="home-fixed-navigation">
+(function(){
+  const pageImage=document.querySelector('.page > img');
+  const header=document.querySelector('#home-fixed-header');
+  const footer=document.querySelector('#home-fixed-footer');
+  const nosotros=document.getElementById('nosotros');
+  if(!pageImage||!header||!footer)return;
+  header.querySelector('img').src=pageImage.src;
+  footer.querySelector('img').src=pageImage.src;
+  function updateHomeFixed(){
+    const homeVisible=!nosotros || !nosotros.classList.contains('active');
+    document.body.classList.toggle('home-fixed',homeVisible);
+  }
+  updateHomeFixed();
+  new MutationObserver(updateHomeFixed).observe(nosotros||document.body,{attributes:true,attributeFilter:['class']});
+})();
+</script>
 <script id="filport-navigation">
 (function () {
   const home = document.querySelector('.page');
   const nosotros = document.getElementById('nosotros');
-
   if (!home || !nosotros) return;
 
-  function showHome(updateHistory = true) {
-    home.style.display = '';
+  function topNow(){ window.scrollTo(0,0); document.documentElement.scrollTop=0; document.body.scrollTop=0; }
+  function showHome(addHistory){
+    home.style.display='';
     nosotros.classList.remove('active');
     document.body.classList.remove('section-open');
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-    if (updateHistory) history.pushState(null, '', '#inicio');
+    topNow();
+    if(addHistory) history.pushState({section:'inicio'},'', '#inicio');
   }
-
-  function showNosotros(updateHistory = true) {
-    home.style.display = 'none';
+  function showNosotros(addHistory){
+    home.style.display='none';
     nosotros.classList.add('active');
     document.body.classList.add('section-open');
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-    if (updateHistory) history.pushState(null, '', '#nosotros');
+    topNow();
+    if(addHistory) history.pushState({section:'nosotros'},'', '#nosotros');
   }
 
-  document.querySelectorAll('a[href="#nosotros"]').forEach(function (link) {
-    link.addEventListener('click', function (event) {
+  document.addEventListener('click',function(event){
+    const link=event.target.closest('a[href]');
+    if(!link) return;
+    const href=link.getAttribute('href');
+    if(href==='#inicio'){
+      event.preventDefault(); showHome(true);
+    }else if(href==='#nosotros'){
+      event.preventDefault(); showNosotros(true);
+    }else if(nosotros.classList.contains('active') && (href==='#negocios'||href==='#innovacion'||href==='#contacto')){
       event.preventDefault();
-      showNosotros(true);
-    });
-  });
-
-  document.querySelectorAll('a[href="#inicio"]').forEach(function (link) {
-    link.addEventListener('click', function (event) {
-      event.preventDefault();
-      showHome(true);
-    });
-  });
-
-  window.addEventListener('popstate', function () {
-    if (window.location.hash === '#nosotros') {
-      showNosotros(false);
-    } else {
-      showHome(false);
+      // Esas secciones se incorporarán después. Por ahora no se abandona Nosotros accidentalmente.
     }
   });
 
-  if (window.location.hash === '#nosotros') {
-    showNosotros(false);
-  } else {
-    showHome(false);
-  }
+  window.addEventListener('popstate',function(){
+    if(location.hash==='#nosotros') showNosotros(false); else showHome(false);
+  });
+  window.addEventListener('hashchange',function(){
+    if(location.hash==='#nosotros') showNosotros(false); else if(location.hash==='#inicio'||location.hash==='') showHome(false);
+  });
+
+  if(location.hash==='#nosotros') showNosotros(false); else showHome(false);
 })();
 </script>
 
